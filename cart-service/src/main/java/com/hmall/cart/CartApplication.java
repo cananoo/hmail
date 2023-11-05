@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
 
-@EnableFeignClients
+@EnableFeignClients(basePackages = "com.hmall.api.client")
 @MapperScan("com.hmall.cart.mapper")
 @SpringBootApplication
 public class CartApplication {
