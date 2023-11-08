@@ -5,7 +5,7 @@ spring:
     name: gateway
   cloud:
     nacos:
-      server-addr: 192.168.95.139:8848
+      server-addr: 192.168.95.140:8848
     gateway:
       routes:
         - id: item # 路由规则id，自定义，唯一
@@ -28,3 +28,15 @@ spring:
           uri: lb://pay-service
           predicates:
             - Path=/pay-orders/**
+hm:
+  jwt:
+    location: classpath:hmall.jks
+    alias: hmall
+    password: hmall123
+    tokenTTL: 30m
+  auth:
+    excludePaths:
+      - /search/**
+      - /users/login
+      - /items/**
+      - /hi
