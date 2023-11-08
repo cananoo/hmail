@@ -55,6 +55,10 @@ public class LoginGlobalFilter implements GlobalFilter, Ordered {
         }
         System.out.println("userId" + userID);
         // TODO 4.传递用户信息到下游服务
+        String userInfo = userID.toString();
+        // 修改请求头 -- 传递到下游微服务
+        exchange.mutate().request(builder -> builder.header("user-info", userInfo)).build();
+
         // 5.放行
         return chain.filter(exchange);
     }
